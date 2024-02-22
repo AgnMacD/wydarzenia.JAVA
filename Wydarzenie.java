@@ -1,3 +1,7 @@
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
 abstract class Wydarzenie {
     protected String tytul;
     protected LocalDateTime dataCzas;
@@ -11,7 +15,6 @@ abstract class Wydarzenie {
         this.uczestnicy = new ArrayList<>();
     }
 
-    // Gettery i settery
     public String getTytul() {
         return tytul;
     }
@@ -47,7 +50,4 @@ abstract class Wydarzenie {
     public void usunUczestnika(String uczestnik) {
         uczestnicy.remove(uczestnik);
     }
-
-
 }
-

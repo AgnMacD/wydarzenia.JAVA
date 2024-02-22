@@ -1,15 +1,19 @@
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import java.nio.file.*;
+import java.io.IOException;
+import java.util.stream.Collectors;
+
 public class ZarzadzanieWydarzeniami {
     private List<Wydarzenie> wydarzenia = new ArrayList<>();
 
+    // Metoda do dodawania dowolnego obiektu dziedziczącego po Wydarzenie
     public void dodajWydarzenie(Wydarzenie wydarzenie) {
         wydarzenia.add(wydarzenie);
     }
-    
-    public void dodajWydarzenie(String tytul, LocalDateTime dataCzas, String miejsce) {
-        Wydarzenie noweWydarzenie = new Wydarzenie(tytul, dataCzas, miejsce);
-        wydarzenia.add(noweWydarzenie);
-    }
 
+    // Metody do zarządzania wydarzeniami
     public void edytujWydarzenie(Wydarzenie wydarzenie, String nowyTytul, LocalDateTime nowaDataCzas, String noweMiejsce) {
         if (wydarzenia.contains(wydarzenie)) {
             wydarzenie.setTytul(nowyTytul);
@@ -51,7 +55,6 @@ public class ZarzadzanieWydarzeniami {
                 } else if ("Warsztat".equals(atrybuty[0])) {
                     this.dodajWydarzenie(new Warsztat(atrybuty[1], LocalDateTime.parse(atrybuty[2]), atrybuty[3], atrybuty[4]));
                 }
-                
             }
         } catch (IOException e) {
             System.err.println("Błąd podczas odczytu z pliku: " + e.getMessage());
